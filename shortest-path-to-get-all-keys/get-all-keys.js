@@ -13,12 +13,13 @@ var shortestPathAllKeys = function(grid) {
     const q = [[...findStart(grid, m, n), 0]];
     const keys = {};
     const collectedKeys = {};
+    let preCollectedKeys = {}
     initCollectedKeys(collectedKeys, grid);
+    preCollectedKeys = JSON.parse(JSON.stringify(collectedKeys));
     let minSteps = -1;
     while (q.length > 0) {
         const front = q[0];
-        console.log(front);
-        
+        console.log(front);        
         if (grid[front[1]][front[0]] === '.') {
             // keep going
             stepThrough(visited, front, grid, q);
@@ -37,9 +38,14 @@ var shortestPathAllKeys = function(grid) {
                 stepThrough(visited, front, grid, q);
                 delete keys[lockKey];
             } else {
+                visited[front[1]][front[0]] = false;
                 q.splice(0, 1);
-                continue;
             }
+        }
+
+        if (JSON.stringify(collectedKeys) !== JSON.stringify(preCollectedKeys)) {
+            resetVisited(visited);
+            preCollectedKeys = JSON.parse(JSON.stringify(collectedKeys));
         }
 
         if (allKeysAreCollected(collectedKeys)) {
@@ -55,6 +61,14 @@ var shortestPathAllKeys = function(grid) {
 
     return minSteps;
 };
+
+function resetVisited(visited) {
+    for (let i = 0; i < visited.length; i++) {
+        for (let j = 0; j < visited[i].length; j++) {
+            visited[i][j] = false;
+        }
+    }
+}
 
 function allKeysAreCollected(collectedKeys) {
     const keys= Object.keys(collectedKeys);

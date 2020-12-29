@@ -97,4 +97,26 @@ def delete(root, v):
 
 delete(root, 3)
 delete(root, 7)
+delete(root,20)
 printBST(root, 0)
+
+print("---------------")
+root2=BST(5)
+ten=BST(10)
+six=BST(6)
+root2.right=ten
+ten.left=six
+delete(root2, 10)
+delete(root2, 6)
+printBST(root2,0)
+
+print("--------------------------")
+
+root3=BST(50)
+fourtyeight=BST(48)
+fourtynine=BST(49)
+root3.left=fourtyeight
+fourtyeight.right=fourtynine
+delete(root3,48)
+delete(root3,49)
+printBST(root3,0)

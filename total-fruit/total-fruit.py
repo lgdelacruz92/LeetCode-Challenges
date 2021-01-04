@@ -19,23 +19,25 @@ class Solution:
                 if len(types) == 3:
                     k = j 
                     types_to_keep = set()
-                    while len(types_to_keep) < 2:
-                        types_to_keep.add(tree[k]) 
-                        k-=1
-                    for x in range(i, k+1):
-                        if tree[x] in types:
-                            types.remove(tree[x])
-                    i = k+1
+                    last_item_added = None
+                    while k >= 0 and len(types_to_keep) <= 2:
+                        types_to_keep.add(tree[k])
+                        if len(types_to_keep) == 3:
+                            last_item_added = tree[k] 
+                            break
+                        k -= 1
+                    types_to_keep.remove(last_item_added)
+                    types = types_to_keep
+                    i = k + 1
                 j+=1
             m = max(m, j-i)
-            return m 
-
+            return m
 
 s = Solution()
 # t1 = [3,3,3,1,2,1,1,2,3,3,4]
 # r = s.totalFruit(t1)
 # print(r)
 
-t2 = [0,1,6,6,4,4,6]
+t2 = [1,9,1,8,22,0,22,19,19,2,19,6,6,19,2,20,2,9,9,9,9,16,19,16,19,11,19,0,19,19] 
 r = s.totalFruit(t2)
 print(r)

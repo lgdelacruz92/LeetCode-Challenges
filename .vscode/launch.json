@@ -4,39 +4,6 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "java",
-            "name": "Launch solution",
-            "request": "launch",
-            "mainClass": "solution",
-            "projectName": "LeetCode_72fa9444"
-        },
-        {
-            "type": "java",
-            "name": "Launch Solution",
-            "request": "launch",
-            "mainClass": "Solution",
-            "projectName": "LeetCode_72fa9444"
-        },
-        {
-            "type": "java",
-            "name": "Launch quickstart",
-            "request": "launch",
-            "mainClass": "quickstart",
-            "projectName": "LeetCode_72fa9444"
-        },
-        {
-            "name": "clang++ - Build and debug active file",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "console": "externalTerminal",
-            "MIMode": "gdb",
-            "preLaunchTask": "C/C++: clang++ build active file"
-        }
+
     ]
 }
